@@ -58,6 +58,9 @@ selfManagedPlan:
             <div class="solution thingsboard-cloud active defaultselection" data-product-id="thingsboard-cloud" onClick="activateProductSection('thingsboard-cloud')">
                 <h3 data-faq-id="what-is-cloud" data-faq-link-size="70%">Cloud</h3>
             </div>
+            <div class="solution private-cloud" data-product-id="private-cloud" onClick="activateProductSection('private-cloud')">
+                <h3 data-faq-id="difference" data-faq-link-size="70%">Private cloud</h3>
+            </div>
             <div class="solution thingsboard-pe" data-product-id="thingsboard-pe" onClick="activateProductSection('thingsboard-pe')">
                 <h3 data-faq-id="difference" data-faq-link-size="70%">Self-managed</h3>
             </div>
@@ -206,6 +209,69 @@ selfManagedPlan:
                                 Custom <b>SLA</b>
                             </div>
                             <div class="pricing-square-item" data-faq-id="white-labeling"><b>White-labeling</b></div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="private-cloud" class="pricing-content" style="display: none;">
+    <div class="container">
+        <div class="pricing-content-header row">
+            <div class="pricing-content-description pricing-cloud active col-lg">
+                <h2>Private cloud plans</h2>
+                <div class="pricing-content-details">
+                    All plans include <b>hosting</b> costs and are based on dedicated server instances. <br/>Focus on your solution while we manage the servers for you.
+                </div>
+            </div>
+        </div>
+        <div class="pricing-div">
+            <div class="pricing-section pricing-cloud active">
+               <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4 mb-4">
+                        <div class="pricing-square">
+                            <h2>Expansion</h2>
+                            <div class="pricing-square-description">
+                                <p>For the fast-growing projects</p>
+                            </div>
+                            <h4 class="pricing-square-price mb-0">
+                                $1199
+                                <span>/month</span>
+                            </h4>
+                            <div class="row justify-content-center">
+                                <a class="btn-blue btn-pricing" href="/docs/contact-us/">
+                                    Contact Us
+                                </a>
+                            </div>
+                            <div class="pricing-square-item">Up to 10 000 devices</div>
+                            <div class="pricing-square-item">99.5% Uptime SLA</div>
+                            <div class="pricing-square-item">500 GB of storage <span data-faq-id="private-cloud-metered-billing">included</span><br/></div>
+                            <div class="pricing-square-item" data-faq-id="private-cloud-multi-tenancy">Multi-tenancy</div>
+                            <div class="pricing-square-item" data-faq-id="private-cloud-white-labeling"><b>White-labeling</b></div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-6 col-xl-4 mb-4">
+                        <div class="pricing-square">
+                            <h2>Unlimited</h2>
+                            <div class="pricing-square-description">
+                                <p>Scale without the limits</p>
+                            </div>
+                            <h4 class="pricing-square-price mb-0">
+                                $1999
+                                <span>/month</span>
+                            </h4>
+                            <div class="row justify-content-center">
+                                <a class="btn-blue btn-pricing" href="/docs/contact-us/">
+                                    Contact Us
+                                </a>
+                            </div>
+                            <div class="pricing-square-item">Unlimited devices</div>
+                            <div class="pricing-square-item">99.95% Uptime SLA</div>
+                            <div class="pricing-square-item">1000 GB of storage <span data-faq-id="private-cloud-metered-billing">included</span><br/></div>
+                            <div class="pricing-square-item" data-faq-id="private-cloud-multi-tenancy">Multi-tenancy</div>
+                            <div class="pricing-square-item" data-faq-id="private-cloud-white-labeling"><b>White-labeling</b></div>
                         </div>
                     </div>
                </div>
@@ -1059,6 +1125,22 @@ selfManagedPlan:
         </div>
     </div>
  </div>  
+</div>
+
+<div class="container faq-content">
+    <h2 id="metered-billing" class="text-center">Metered billing</h2>
+    <p>
+        Both plans include pre-defined infrastructure resources. The 'Expansion' plan includes: 500 GB of the database storage, 1 TB of network traffic, 8 CPUs and 16 GB of RAM to process the data. 
+        The 'Unlimited' plan includes 1000 GB of the database storage, 2 TB of network traffic, 32 CPUs and 64 GB of RAM to process the data.
+        <br>
+        For both plans, if you exceed the included resources or require additional resources, charges will be applied based on your usage:
+        Additional Storage: $X/GB
+        Network Usage: $Y/GB
+        Additional vCPU: $Z/vCPU
+        Additional RAM: $A/GB
+        <br>
+        Our plans are designed to cater to the typical needs of our customers. Most of our clients never require additional resources beyond what's included in their chosen plan. We provide the metered billing option for those rare instances where advanced use cases demand more. Rest assured, we aim to be transparent, and you'll always be notified if you're nearing your resource limits.
+    </p>
 </div>
 
 <div class="container faq-content">
