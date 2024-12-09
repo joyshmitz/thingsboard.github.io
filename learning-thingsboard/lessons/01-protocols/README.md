@@ -1,11 +1,11 @@
 # Урок 1: Основні протоколи ThingsBoard - MQTT та Modbus
 
 ## Зміст
-1. [MQTT протокол](#mqtt-протокол)
+1. [MQTT та Sparkplug B](#mqtt-та-sparkplug-b)
 2. [Modbus протокол](#modbus-протокол)
 3. [Практичні приклади](#практичні-приклади)
 
-## MQTT протокол
+## MQTT та Sparkplug B
 
 ### Що таке MQTT?
 MQTT (Message Queuing Telemetry Transport) - це легкий протокол обміну повідомленнями, який працює за принципом publish/subscribe. Він ідеально підходить для IoT пристроїв через:
@@ -14,49 +14,155 @@ MQTT (Message Queuing Telemetry Transport) - це легкий протокол 
 - Надійність доставки повідомлень
 - Підтримку QoS (Quality of Service)
 
-### Основні концепції MQTT в ThingsBoard
-1. **Топіки (Topics)**
-   - `v1/devices/me/telemetry` - для відправки телеметрії
-   - `v1/devices/me/attributes` - для роботи з атрибутами
-   - `v1/devices/me/rpc/request/+` - для RPC запитів
-   - `v1/devices/me/rpc/response/+` - для RPC відповідей
+### Sparkplug B специфікація
 
-2. **Формат повідомлень**
+#### Основні концепції Sparkplug B
+Sparkplug B - це специфікація, що визначає:
+- Стандартизований спосіб використання MQTT для промислових додатків
+- Чітко визначену структуру топіків
+- Формат корисного навантаження (payload)
+- Стан сесії та народження/смерть вузлів
+
+#### Структура топіків Sparkplug B
+```
+spBv1.0/{group_id}/{message_type}/{edge_node_id}/{device_id}
+```
+де:
+- `spBv1.0` - версія протоколу
+- `group_id` - ідентифікатор групи
+- `message_type` - тип повідомлення (NBIRTH, NDEATH, DBIRTH, DDEATH, NDATA, DDATA, NCMD, DCMD)
+- `edge_node_id` - ідентифікатор крайового вузла
+- `device_id` - ідентифікатор пристрою (опціонально)
+
+#### Типи повідомлень Sparkplug B
+1. **BIRTH повідомлення**
+   - `NBIRTH` (Node Birth) - публікується при підключенні вузла
+   - `DBIRTH` (Device Birth) - публікується при підключенні пристрою
+
+2. **DEATH повідомлення**
+   - `NDEATH` (Node Death) - публікується при відключенні вузла
+   - `DDEATH` (Device Death) - публікується при відключенні пристрою
+
+3. **DATA повідомлення**
+   - `NDATA` (Node Data) - дані від вузла
+   - `DDATA` (Device Data) - дані від пристрою
+
+4. **COMMAND повідомлення**
+   - `NCMD` (Node Command) - команди для вузла
+   - `DCMD` (Device Command) - команди для пристрою
+
+#### Приклад Sparkplug B повідомлення
 ```json
 {
-    "temperature": 24.5,
-    "humidity": 68,
-    "timestamp": 1638364800000
+    "timestamp": 1638364800000,
+    "metrics": [
+        {
+            "name": "Temperature",
+            "value": 25.5,
+            "type": "Double",
+            "timestamp": 1638364800000
+        },
+        {
+            "name": "Status",
+            "value": "Running",
+            "type": "String",
+            "timestamp": 1638364800000
+        }
+    ],
+    "seq": 0
 }
 ```
 
-3. **Аутентифікація**
-   - Використання Access Token
-   - SSL/TLS сертифікати
-   - Basic аутентифікація
+#### Налаштування Sparkplug B в ThingsBoard
 
-### Приклад підключення через MQTT
+1. **Конфігурація з'єднання**
 ```python
 import paho.mqtt.client as mqtt
-import json
-import time
+from sparkplug_b import *
 
-# Налаштування MQTT клієнта
-client = mqtt.Client()
+# Налаштування клієнта
+client = mqtt.Client("Edge Node 1")
 client.username_pw_set("YOUR_ACCESS_TOKEN")
-client.connect("demo.thingsboard.io", 1883, 60)
 
-# Відправка телеметрії
-def send_telemetry():
-    telemetry = {
-        "temperature": 25.5,
-        "humidity": 56
+# Налаштування Sparkplug B
+groupId = "Group1"
+edgeNode = "Edge1"
+deviceId = "Device1"
+
+# Створення NBIRTH повідомлення
+def create_nbirth():
+    payload = {
+        "timestamp": current_time_millis(),
+        "metrics": [
+            {"name": "Node Control/Scan Rate", "value": 1000, "type": "Int32"},
+            {"name": "Properties/Version", "value": "v1.0", "type": "String"}
+        ]
     }
-    client.publish('v1/devices/me/telemetry', json.dumps(telemetry))
+    return payload
 
-# Основний цикл
-client.loop_start()
-send_telemetry()
+# Публікація NBIRTH
+def publish_nbirth():
+    topic = f"spBv1.0/{groupId}/NBIRTH/{edgeNode}"
+    payload = create_nbirth()
+    client.publish(topic, json.dumps(payload), qos=0, retain=True)
+```
+
+2. **Обробка подій**
+```python
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+        publish_nbirth()
+        # Підписка на команди
+        topic = f"spBv1.0/{groupId}/NCMD/{edgeNode}/+"
+        client.subscribe(topic, qos=0)
+
+def on_message(client, userdata, msg):
+    # Обробка вхідних повідомлень
+    topic = msg.topic
+    payload = json.loads(msg.payload.decode())
+    
+    if "NCMD" in topic:
+        handle_command(payload)
+```
+
+### Найкращі практики Sparkplug B
+
+1. **Керування станом**
+   - Завжди публікуйте BIRTH повідомлення при підключенні
+   - Використовуйте Last Will and Testament (LWT) для DEATH повідомлень
+   - Підтримуйте послідовність номерів (seq) для виявлення пропущених повідомлень
+
+2. **Метрики**
+   - Використовуйте узгоджені імена метрик
+   - Включайте часові мітки для кожної метрики
+   - Групуйте пов'язані метрики
+
+3. **Безпека**
+   - Використовуйте TLS для шифрування
+   - Налаштуйте автентифікацію на рівні клієнта
+   - Контролюйте доступ до топіків
+
+### Моніторинг та діагностика
+
+1. **Відстеження стану вузлів**
+```python
+def monitor_node_state():
+    # Підписка на DEATH повідомлення
+    death_topic = f"spBv1.0/{groupId}/NDEATH/{edgeNode}"
+    client.subscribe(death_topic, qos=0)
+    
+    # Налаштування LWT
+    client.will_set(death_topic, json.dumps({
+        "timestamp": current_time_millis(),
+        "metrics": []
+    }), qos=0, retain=True)
+```
+
+2. **Логування подій**
+```python
+def log_sparkplug_event(event_type, details):
+    logger.info(f"Sparkplug B Event: {event_type}")
+    logger.debug(f"Details: {details}")
 ```
 
 ## Modbus протокол
