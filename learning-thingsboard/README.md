@@ -1,133 +1,133 @@
-# Learning ThingsBoard
+# Вивчення ThingsBoard
 
-This repository is dedicated to learning ThingsBoard - an open-source IoT platform for device management, data collection, processing and visualization.
+Цей репозиторій присвячений вивченню ThingsBoard - відкритої IoT платформи для керування пристроями, збору даних, їх обробки та візуалізації.
 
-## Table of Contents
+## Зміст
 
-1. [Basic Concepts](#basic-concepts)
-2. [Installation](#installation)
-3. [Platform Features](#platform-features)
-4. [Working with Devices](#working-with-devices)
-5. [Data Visualization](#data-visualization)
+1. [Основні концепції](#основні-концепції)
+2. [Встановлення](#встановлення)
+3. [Можливості платформи](#можливості-платформи)
+4. [Робота з пристроями](#робота-з-пристроями)
+5. [Візуалізація даних](#візуалізація-даних)
 6. [Rule Engine](#rule-engine)
-7. [Security](#security)
-8. [Best Practices](#best-practices)
+7. [Безпека](#безпека)
+8. [Найкращі практики](#найкращі-практики)
 
-## Basic Concepts
+## Основні концепції
 
-### What is ThingsBoard?
-ThingsBoard is an open-source IoT platform that enables:
-- Device management
-- Data collection
-- Processing and visualization
-- Device connectivity via industry standard IoT protocols
-- Complex event processing and reactions using rule engine
+### Що таке ThingsBoard?
+ThingsBoard - це відкрита IoT платформа, яка забезпечує:
+- Керування пристроями
+- Збір даних
+- Обробку та візуалізацію
+- Підключення пристроїв через стандартні IoT протоколи
+- Обробку складних подій та реакцій за допомогою Rule Engine
 
-### Key Components
-- **Devices**: Physical or virtual entities that produce telemetry data
-- **Assets**: Logical groups of devices
-- **Customers**: Entities that own devices and assets
-- **Dashboards**: Visualization interfaces for IoT data
-- **Rule Engine**: Processing and reaction system for IoT data
+### Ключові компоненти
+- **Пристрої**: Фізичні або віртуальні об'єкти, що генерують телеметричні дані
+- **Активи**: Логічні групи пристроїв
+- **Клієнти**: Сутності, що володіють пристроями та активами
+- **Дашборди**: Інтерфейси візуалізації IoT даних
+- **Rule Engine**: Система обробки та реагування на IoT дані
 
-## Installation
+## Встановлення
 
-### Prerequisites
-- Java 11 or newer
-- PostgreSQL (for production)
-- Maven (for building from source)
+### Передумови
+- Java 11 або новіша
+- PostgreSQL (для продакшену)
+- Maven (для збірки з вихідного коду)
 
-### Installation Methods
-1. Using Docker
-2. Installing from package
-3. Building from source
+### Методи встановлення
+1. Використання Docker
+2. Встановлення з пакету
+3. Збірка з вихідного коду
 
-## Platform Features
+## Можливості платформи
 
-### Device Management
-- Device provisioning
-- Device attributes
-- Device groups
-- Device credentials
+### Керування пристроями
+- Налаштування пристроїв
+- Атрибути пристроїв
+- Групи пристроїв
+- Облікові дані пристроїв
 
-### Data Collection
-- MQTT protocol
-- HTTP protocol
-- CoAP protocol
-- OPC-UA protocol
+### Збір даних
+- Протокол MQTT
+- Протокол HTTP
+- Протокол CoAP
+- Протокол OPC-UA
 
-### Data Visualization
-- Real-time dashboards
-- Historical data analysis
-- Custom widgets
-- Data export
+### Візуалізація даних
+- Дашборди реального часу
+- Аналіз історичних даних
+- Користувацькі віджети
+- Експорт даних
 
-## Working with Devices
+## Робота з пристроями
 
-### Device Connectivity
-- MQTT examples
-- HTTP examples
-- Device authentication
-- Device provisioning
+### Підключення пристроїв
+- Приклади MQTT
+- Приклади HTTP
+- Аутентифікація пристроїв
+- Налаштування пристроїв
 
-### Data Models
-- Telemetry data
-- Attributes
-- RPC calls
+### Моделі даних
+- Телеметричні дані
+- Атрибути
+- RPC виклики
 
 ## Rule Engine
 
-### Basics
-- Nodes and connections
-- Message types
-- Node types
+### Основи
+- Вузли та з'єднання
+- Типи повідомлень
+- Типи вузлів
 
-### Common Use Cases
-- Data transformation
-- Alerts and notifications
-- Integration with external systems
+### Типові випадки використання
+- Трансформація даних
+- Сповіщення та попередження
+- Інтеграція з зовнішніми системами
 
-## Security
+## Безпека
 
-### Authentication
-- Device authentication
-- User authentication
+### Аутентифікація
+- Аутентифікація пристроїв
+- Аутентифікація користувачів
 - OAuth 2.0
 
-### Authorization
-- User roles
-- Permissions
-- Access control
+### Авторизація
+- Ролі користувачів
+- Дозволи
+- Контроль доступу
 
-## Best Practices
+## Найкращі практики
 
-### Development
-- Project structure
-- Code organization
-- Testing strategies
+### Розробка
+- Структура проекту
+- Організація коду
+- Стратегії тестування
 
-### Deployment
-- Production setup
-- Scaling
-- Backup and recovery
+### Розгортання
+- Налаштування продакшену
+- Масштабування
+- Резервне копіювання та відновлення
 
-## Resources
+## Ресурси
 
-### Official Documentation
-- [ThingsBoard Documentation](https://thingsboard.io/docs/)
+### Офіційна документація
+- [Документація ThingsBoard](https://thingsboard.io/docs/)
 - [ThingsBoard Community Edition](https://github.com/thingsboard/thingsboard)
 
-### Community
-- [Community Forum](https://groups.google.com/forum/#!forum/thingsboard)
+### Спільнота
+- [Форум спільноти](https://groups.google.com/forum/#!forum/thingsboard)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/thingsboard)
 
-## Contributing
+## Як зробити внесок
 
-Feel free to contribute to this learning repository by:
-1. Creating issues for topics that need more clarification
-2. Submitting pull requests with improvements
-3. Sharing your learning experience and best practices
+Ви можете зробити внесок у цей навчальний репозиторій шляхом:
+1. Створення issues для тем, які потребують більш детального пояснення
+2. Надсилання pull requests з покращеннями
+3. Поділитися своїм досвідом навчання та найкращими практиками
 
-## License
+## Ліцензія
 
-This learning repository is licensed under the [Apache License 2.0](LICENSE).
+Цей навчальний репозиторій ліцензовано під [Apache License 2.0](LICENSE)
