@@ -1,0 +1,1 @@
+../learning-thingsboard/scripts/sync-learning-content.sh
