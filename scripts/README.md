@@ -1,74 +1,74 @@
-# ThingsBoard Documentation Scripts
+# Скрипти документації ThingsBoard
 
-This directory contains utility scripts for managing ThingsBoard documentation.
+Ця директорія містить утилітні скрипти для керування документацією ThingsBoard.
 
-## Migration Script
+## Скрипт міграції
 
 ### migrate-to-learning.sh
 
-Script for migrating and synchronizing learning materials between the main ThingsBoard documentation and the learning repository.
+Скрипт для міграції та синхронізації навчальних матеріалів між основною документацією ThingsBoard та навчальним репозиторієм.
 
-#### Purpose and Background
+#### Призначення та передумови
 
-This script was created to solve several specific challenges in the ThingsBoard documentation workflow:
+Цей скрипт було створено для вирішення кількох специфічних завдань у процесі роботи з документацією ThingsBoard:
 
-1. **Separation of Concerns**
-   - Separates learning materials from the main documentation
-   - Enables independent development of educational content
-   - Allows for different release cycles for docs and learning materials
+1. **Розділення відповідальності**
+   - Відокремлює навчальні матеріали від основної документації
+   - Забезпечує незалежну розробку освітнього контенту
+   - Дозволяє мати різні цикли релізів для документації та навчальних матеріалів
 
-2. **Content Organization**
-   - Maintains a clean structure for learning materials
-   - Prevents mixing of different types of documentation
-   - Makes it easier to manage and update educational content
+2. **Організація контенту**
+   - Підтримує чітку структуру навчальних матеріалів
+   - Запобігає змішуванню різних типів документації
+   - Спрощує керування та оновлення освітнього контенту
 
-3. **Development Workflow**
-   - Supports parallel work on documentation and learning materials
-   - Enables easy synchronization between repositories
-   - Preserves the history of changes through backups
+3. **Робочий процес розробки**
+   - Підтримує паралельну роботу над документацією та навчальними матеріалами
+   - Забезпечує легку синхронізацію між репозиторіями
+   - Зберігає історію змін через резервні копії
 
-4. **Quality Assurance**
-   - Ensures consistent file structure
-   - Maintains correct internal links
-   - Prevents accidental file overwrites
+4. **Забезпечення якості**
+   - Забезпечує послідовну структуру файлів
+   - Підтримує коректність внутрішніх посилань
+   - Запобігає випадковому перезапису файлів
 
-The script is particularly useful when:
-- Reorganizing existing learning materials
-- Adding new educational content
-- Maintaining consistency between repositories
-- Preparing content for different platforms or formats
+Скрипт особливо корисний коли:
+- Реорганізовуються існуючі навчальні матеріали
+- Додаються нові освітні матеріали
+- Підтримується узгодженість між репозиторіями
+- Готується контент для різних платформ чи форматів
 
-#### Features
+#### Можливості
 
-- Creates backups before any modifications
-- Verifies and creates necessary directory structure
-- Synchronizes new files without overwriting existing ones
-- Updates markdown file links to match the new structure
-- Provides colored logging output
+- Створює резервні копії перед будь-якими змінами
+- Перевіряє та створює необхідну структуру директорій
+- Синхронізує нові файли без перезапису існуючих
+- Оновлює посилання в markdown файлах відповідно до нової структури
+- Забезпечує кольоровий вивід логів
 
-#### Prerequisites
+#### Передумови
 
-- Unix-like environment (Linux or macOS)
-- `rsync` installed
-- Proper file permissions
+- Unix-подібне середовище (Linux або macOS)
+- Встановлений `rsync`
+- Відповідні права доступу до файлів
 
-#### Usage
+#### Використання
 
 ```bash
 ./migrate-to-learning.sh
 ```
 
-#### Directory Structure
+#### Структура директорій
 
-The script expects the following directory structure:
+Скрипт очікує наступну структуру директорій:
 
 ```
 thingsboard.github.io/
 ├── docs/
-│   └── learning/          # Source learning materials
+│   └── learning/          # Вихідні навчальні матеріали
 ├── images/
-│   └── learning/          # Source images
-├── learning-thingsboard/  # Target learning repository
+│   └── learning/          # Вихідні зображення
+├── learning-thingsboard/  # Цільовий навчальний репозиторій
 │   ├── lessons/
 │   ├── docs/
 │   ├── assets/
@@ -77,16 +77,16 @@ thingsboard.github.io/
     └── migrate-to-learning.sh
 ```
 
-#### Backup
+#### Резервне копіювання
 
-Before any modifications, the script creates a backup in:
+Перед будь-якими змінами скрипт створює резервну копію в:
 ```
 thingsboard.github.io/backups/YYYYMMDD_HHMMSS/
 ```
 
-#### Configuration
+#### Конфігурація
 
-Main configuration variables in the script:
+Основні змінні конфігурації в скрипті:
 
 ```bash
 SOURCE_DIR="/Users/sd/GitHub/tb/thingsboard.github.io"
@@ -94,18 +94,18 @@ LEARNING_DIR="$SOURCE_DIR/learning-thingsboard"
 BACKUP_DIR="$SOURCE_DIR/backups/$(date +%Y%m%d_%H%M%S)"
 ```
 
-#### Error Handling
+#### Обробка помилок
 
-- Script uses `set -e` to stop on any error
-- Provides colored output for different message types:
-  - INFO: Regular progress messages
-  - WARNING: Non-critical issues
-  - ERROR: Critical issues that stop execution
+- Скрипт використовує `set -e` для зупинки при будь-якій помилці
+- Забезпечує кольоровий вивід для різних типів повідомлень:
+  - INFO: Звичайні повідомлення про прогрес
+  - WARNING: Некритичні проблеми
+  - ERROR: Критичні проблеми, що зупиняють виконання
 
-#### Contributing
+#### Внесення змін
 
-When modifying the script:
-1. Test changes in a safe environment first
-2. Maintain the backup functionality
-3. Keep the logging consistent
-4. Update this README if adding new features
+При модифікації скрипта:
+1. Спочатку тестуйте зміни в безпечному середовищі
+2. Підтримуйте функціональність резервного копіювання
+3. Зберігайте послідовність логування
+4. Оновлюйте цей README при додаванні нових функцій
