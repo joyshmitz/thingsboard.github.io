@@ -1,1 +1,0 @@
-../learning-thingsboard/scripts/migrate-to-learning.sh
