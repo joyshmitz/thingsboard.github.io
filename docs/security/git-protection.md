@@ -1,5 +1,8 @@
 # Налаштування безпеки Git репозиторію
 
+> [!NOTE]
+> Детальна технічна документація з впровадження доступна в [git-protection-implementation.md](git-protection-implementation.md)
+
 ## Впроваджені механізми захисту
 
 ### 1. Захист від випадкового push в upstream
