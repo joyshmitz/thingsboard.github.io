@@ -12,6 +12,7 @@ git remote set-url --push upstream NO_PUSH
 ✅ Статус: Впроваджено та протестовано
 - Блокує будь-які push-операції в upstream репозиторій
 - Змушує використовувати fork-and-pull модель розробки
+> [Деталі впровадження](git-protection-implementation.md#1-налаштування-remote-репозиторіїв)
 
 ### 2. Шаблони комміт-повідомлень
 ```bash
@@ -21,6 +22,7 @@ git config --local commit.template ~/.gitmessage
 - Стандартизує формат комміт-повідомлень
 - Покращує читабельність історії змін
 - Автоматично додається при створенні нового коміту
+> [Деталі впровадження](git-protection-implementation.md#2-шаблони-коммітповідомлень)
 
 ### 3. Контроль push-операцій
 ```bash
@@ -29,11 +31,7 @@ git config remote.pushDefault origin
 ✅ Статус: Впроваджено та протестовано
 - Всі push-операції за замовчуванням направляються в origin
 - Зменшує ризик випадкового push в неправильний remote
-
-### 4. Pre-push хук
-- Блокування push в upstream
-- Перевірка розміру файлів (ліміт 5MB)
-- Попередження про невідповідність назви гілки конвенції
+> [Деталі впровадження](git-protection-implementation.md#1-налаштування-remote-репозиторіїв)
 
 ## Заплановані механізми
 
@@ -41,11 +39,13 @@ git config remote.pushDefault origin
 ⏳ Статус: В процесі впровадження
 - Планується обмеження на файли більше 5MB
 - Потребує доопрацювання pre-push хуку
+> [Технічні деталі та статус](git-protection-implementation.md#1-pre-push-хук)
 
 ### 2. Контроль назв гілок
 ⏳ Статус: В процесі розробки
 - Планується впровадження через GitHub branch protection rules
 - Рекомендований формат: feature/*, bugfix/*, docs/*, joy/*
+> [План впровадження](git-protection-implementation.md#2-github-branch-protection)
 
 ## Рекомендації з безпеки
 
@@ -53,11 +53,13 @@ git config remote.pushDefault origin
    - Перевіряйте цільовий репозиторій
    - Використовуйте повні назви: `git push origin feature/name`
    - Уникайте команди `git push` без параметрів
+> [Відомі проблеми та їх вирішення](git-protection-implementation.md#проблеми-та-їх-вирішення)
 
 2. **Робота з гілками**:
    - Використовуйте змістовні префікси (feature/, bugfix/, etc.)
    - Додавайте ідентифікатор автора
    - Приклад: `feature/joy/lessons`
+> [Рекомендований формат](git-protection-implementation.md#2-назви-гілок)
 
 3. **Регулярні перевірки**:
    - Перевіряйте налаштування remote-репозиторіїв
@@ -69,8 +71,10 @@ git config remote.pushDefault origin
 1. Завершити впровадження pre-push хуків для:
    - Перевірки розміру файлів
    - Валідації назв гілок
+> [Короткострокові плани](git-protection-implementation.md#короткострокові-до-022025)
 
 2. Налаштувати GitHub branch protection rules:
    - Шаблони назв гілок
    - Правила merge
    - Code review вимоги
+> [Довгострокові плани](git-protection-implementation.md#довгострокові-до-042025)

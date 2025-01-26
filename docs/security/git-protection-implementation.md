@@ -1,10 +1,14 @@
 # Технічна документація з впровадження захисту Git
 
+> [!NOTE]
+> Цей документ містить технічні деталі впровадження. Для загального огляду дивіться [git-protection.md](git-protection.md)
+
 ## Статус впровадження (26.01.2025)
 
-### ✅ Впроваджено
+### Впроваджено
 
 #### 1. Налаштування remote репозиторіїв
+> [Загальний опис механізму](git-protection.md#1-захист-від-випадкового-push-в-upstream)
 ```bash
 # Встановлення origin як default push target
 git config remote.pushDefault origin
@@ -14,6 +18,7 @@ git remote set-url --push upstream NO_PUSH
 ```
 
 #### 2. Шаблони комміт-повідомлень
+> [Загальний опис механізму](git-protection.md#2-шаблони-комміт-повідомлень)
 ```bash
 # Створення шаблону
 cat > ~/.gitmessage << 'EOF'
@@ -37,9 +42,10 @@ EOF
 git config --local commit.template ~/.gitmessage
 ```
 
-### ⏳ В процесі впровадження
+### В процесі впровадження
 
 #### 1. Pre-push хук
+> [Загальний опис механізму](git-protection.md#1-перевірка-розміру-файлів)
 ```bash
 # Статус: Потребує виправлення синтаксичних помилок
 # Локація: .git/hooks/pre-push
@@ -50,6 +56,7 @@ git config --local commit.template ~/.gitmessage
 ```
 
 #### 2. GitHub Branch Protection
+> [Загальний опис механізму](git-protection.md#2-контроль-назв-гілок)
 ```bash
 # Статус: Заплановано
 # Необхідні налаштування:
@@ -59,6 +66,7 @@ git config --local commit.template ~/.gitmessage
 ```
 
 ## Проблеми та їх вирішення
+> [Рекомендації з безпеки](git-protection.md#рекомендації-з-безпеки)
 
 ### 1. Pre-push хук
 - **Проблема**: Синтаксична помилка в скрипті
@@ -80,6 +88,7 @@ git config --local commit.template ~/.gitmessage
 - **План впровадження**: Через GitHub branch protection rules
 
 ## Наступні кроки
+> [Загальний план дій](git-protection.md#наступні-кроки)
 
 ### Короткострокові (до 02.2025)
 1. Виправити pre-push хук
