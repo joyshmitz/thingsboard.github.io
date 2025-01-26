@@ -41,7 +41,7 @@ node {{TERMINAL}} $ACCESSTOKEN
 
 Where **$ACCESSTOKEN** is the access token for your device, which is located in the device details.
 
-![image](/images/user-guide/ui/widgets/trip-animation-widget/{{EMULATOR}})
+![image](https://img.thingsboard.io/user-guide/ui/widgets/trip-animation-widget/{{EMULATOR}})
 
 Emulator is compatible with Node.js version 12 or higher.
 

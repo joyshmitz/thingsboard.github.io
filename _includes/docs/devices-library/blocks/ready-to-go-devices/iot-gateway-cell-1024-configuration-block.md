@@ -1,13 +1,13 @@
 
 {% assign gatewayConfiguration = '
     ===
-        image: /images/devices-library/ready-to-go-devices/iot-gateway-cell-1024/conn1.png,  
+        image: https://img.thingsboard.io/devices-library/ready-to-go-devices/iot-gateway-cell-1024/conn1.png,  
         title: Open a Browser to the administration web of Cell 1024 using the URL: https://[IP_DEVICE] and go to the "<b>Cloud</b>" tab.
     ===
-        image: /images/devices-library/ready-to-go-devices/iot-gateway-cell-1024/conn2.png,
+        image: https://img.thingsboard.io/devices-library/ready-to-go-devices/iot-gateway-cell-1024/conn2.png,
         title: Activate the Cloud control and configure all the parameters to connect the device to the specific ThingsBoard platform via MQTT.
     ===
-        image: /images/devices-library/ready-to-go-devices/iot-gateway-cell-1024/conn3.png,
+        image: https://img.thingsboard.io/devices-library/ready-to-go-devices/iot-gateway-cell-1024/conn3.png,
         title: Click "<b>Save configuration</b>" button.
 '
 %}  
@@ -37,7 +37,7 @@ In the **device details** select **client attributes** tab and check if the clie
 
 {% assign checkConnection = '
     ===
-        image: /images/devices-library/ready-to-go-devices/iot-gateway-cell-1024/exxn-client-attributes-device-1.png,
+        image: https://img.thingsboard.io/devices-library/ready-to-go-devices/iot-gateway-cell-1024/exxn-client-attributes-device-1.png,
         title: If you did everything is correct, we will see client attributes like the <i>serial_number</i>, <i>last_reboot</i>, <i>device_model</i>, etc.
 '
 %}
@@ -208,13 +208,13 @@ All the information to configure the device correctly through this JSON File can
 
 {% assign configureTheGateway = "
     ===
-        image: /images/devices-library/ready-to-go-devices/iot-gateway-cell-1024/exxn-shared-attributes-device-1.png,
+        image: https://img.thingsboard.io/devices-library/ready-to-go-devices/iot-gateway-cell-1024/exxn-shared-attributes-device-1.png,
         title: Go to device'" | append: 's <b>attributes</b> tab in the device details. Add a new "<b>Shared attribute</b>" with the key "<b>config</b>" of type <b>JSON</b>.
     ===
-        image: /images/devices-library/ready-to-go-devices/iot-gateway-cell-1024/ennx-config-json.png,
+        image: https://img.thingsboard.io/devices-library/ready-to-go-devices/iot-gateway-cell-1024/ennx-config-json.png,
         title: Expand the content of the attribute to full screen for ease of writing it. Paste the contents of the device configuration file into the attribute value.
     ===
-        image: /images/devices-library/ready-to-go-devices/iot-gateway-cell-1024/exxn-shared-attributes-device-2.png,
+        image: https://img.thingsboard.io/devices-library/ready-to-go-devices/iot-gateway-cell-1024/exxn-shared-attributes-device-2.png,
         title: Click "<b>Add</b>" attribute.
 '
 %}

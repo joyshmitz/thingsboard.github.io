@@ -20,7 +20,7 @@ Go to the "Integrations" page of the "Integrations center" section. Click "plus"
 
 {% assign feature = "integrations" %}{% include templates/debug-mode.md %}
 
-![image](/images/user-guide/integrations/chirpstack/chirpstack-integration-setup-1-pe.png)
+![image](https://img.thingsboard.io/user-guide/integrations/chirpstack/chirpstack-integration-setup-1-pe.png)
 
 <br>
 **2. Uplink data converter**. 
@@ -45,7 +45,7 @@ You can always change the decoder function after creating it.
 
 At the step of adding a downlink converter, you can also select a previously created or create a new downlink converter. But for now, leave the "Downlink data converter" field empty. Click "Skip";
 
-![image](/images/user-guide/integrations/chirpstack/chirpstack-integration-setup-3-pe.png)
+![image](https://img.thingsboard.io/user-guide/integrations/chirpstack/chirpstack-integration-setup-3-pe.png)
 
 <br>
 **4. Connection**.
@@ -61,7 +61,7 @@ To complete adding integration, you need to:
 
 Finally, click "Add" button to complete adding the ChirpStack integration.
 
-![image](/images/user-guide/integrations/chirpstack/chirpstack-integration-setup-4-pe.png)
+![image](https://img.thingsboard.io/user-guide/integrations/chirpstack/chirpstack-integration-setup-4-pe.png)
 
 ## Configure integration on your ChirpStack application
 

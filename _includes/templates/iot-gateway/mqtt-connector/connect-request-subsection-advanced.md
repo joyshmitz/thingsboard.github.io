@@ -14,7 +14,7 @@ This section in configuration looks like:
 ```
 {: .copy-code}
 
-![image](/images/gateway/mqtt-connector/connect-request-example-1-ce.png)
+![image](https://img.thingsboard.io/gateway/mqtt-connector/connect-request-example-1-ce.png)
 
 **Device name from the message body:**
 
